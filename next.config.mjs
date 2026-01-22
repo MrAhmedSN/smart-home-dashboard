@@ -2,6 +2,7 @@
 const repoName = 'smart-home-dashboard';
 
 const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -12,12 +13,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: 'export',
-  ...(isProd ? {
-    basePath: `/${smart-home-dashboard}`,
-    assetPrefix: `/${smart-home-dashboard}/`,
-  } : {}),
+  output: 'export', // important for GitHub Pages
+  ...(isProd
+    ? {
+        basePath: `/${repoName}`,
+        assetPrefix: `/${repoName}/`,
+      }
+    : {}),
 };
 
 export default nextConfig;
-
